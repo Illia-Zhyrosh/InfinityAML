@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "three@0.146.0",
+      "destination": "wwwroot/js/three/"
+    },
+    {
+      "library": "jstree@3.3.12",
+      "destination": "wwwroot/js/jstree/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "file-saver@2.0.5",
+      "destination": "wwwroot/js/file-saver/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "xmlwriter@1.0.2",
+      "destination": "wwwroot/js/xmlwriter/"
+    }
+  ]
+}

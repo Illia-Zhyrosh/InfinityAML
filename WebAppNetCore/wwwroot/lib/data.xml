@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Hierarchy are as follows:
+	 |TreeViewItemHead - for expandable list headers
+	 |__TreeViewItem for children
+	 |
+	 |__TreeViewItemHead for sub-categories(if needed)
+		All the data about the item should be nested in <Data> tag
+		Name tag inside Data is mandatory and always be equal to Text attribute of
+		parent TreeViewItem!!!!(search data function purposes)-->
+<TreeViewItemHead Text="Machinery">
+	<TreeViewItemHead Text="Robotics" Category="Robotics">
+		<TreeViewItemHead Text="OMRON">
+			<TreeViewItem Text="Viper 650">
+				<Data>
+					<Name>Viper 650</Name>
+					<Weight>36kg</Weight>
+					<Mounting>Table/Floor/Inverted</Mounting>
+					<NumberOfAxis>6</NumberOfAxis>
+					<Reach>653mm</Reach>
+					<MaximumPayload>5kg</MaximumPayload>
+					<ModelPath>./wwwroot/models/Av650.dae</ModelPath>
+				</Data>
+			</TreeViewItem>
+			<TreeViewItem Text="TM5-700">
+				<Data>
+					<Name>TM5-700</Name>
+					<Weight>22.1kg</Weight>
+					<Mounting>Wall/Table/Ceiling</Mounting>
+					<Reach>700mm</Reach>
+					<MaximumPayload>6kg</MaximumPayload>
+					<PowerSource>AC/DC</PowerSource>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+			<TreeViewItem Text="TM5X-700">
+				<Data>
+					<Name>TM5X-700</Name>
+					<Weight>21.8kg</Weight>
+					<Mounting>Wall/Table/Ceiling</Mounting>
+					<Reach>700mm</Reach>
+					<MaximumPayload>6kg</MaximumPayload>
+					<PowerSource>AC/DC</PowerSource>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+			<TreeViewItem Text="TM5-900">
+				<Data>
+					<Name>TM5-900</Name>
+					<Weight>22.6kg</Weight>
+					<Mounting>Wall/Table/Ceiling</Mounting>
+					<Reach>900mm</Reach>
+					<MaximumPayload>4kg</MaximumPayload>
+					<PowerSource>AC/DC</PowerSource>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+			<TreeViewItem Text="TM5X-900">
+				<Data>
+					<Name>TM5X-900</Name>
+					<Weight>22.3kg</Weight>
+					<Mounting>Wall/Table/Ceiling</Mounting>
+					<Reach>900mm</Reach>
+					<MaximumPayload>4kg</MaximumPayload>
+					<PowerSource>AC/DC</PowerSource>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+		</TreeViewItemHead>
+		<TreeViewItemHead Text="Others...">
+			<TreeViewItem Text="TBD1"></TreeViewItem>
+			<TreeViewItem Text="TBD2"></TreeViewItem>
+			<TreeViewItem Text="TBD3"></TreeViewItem>
+		</TreeViewItemHead>
+	</TreeViewItemHead>
+	<TreeViewItemHead Text="Conveyors" Category="Conveyors">
+		<TreeViewItemHead Text="VEVOR">
+			<TreeViewItem Text="Pvc Belt 150 x 20 cm">
+				<Data>
+					<Name>Pvc Belt 150 x 20 cm</Name>
+					<Material>Stainless Steel + PVC</Material>
+					<RatedVoltage> 220V / 50Hz</RatedVoltage>
+					<Power>60W</Power>
+					<Motor>Geared Motor</Motor>
+					<AdjustableSpeed> 30-120 RPM</AdjustableSpeed>
+					<BeltSize>150 x 20 cm</BeltSize>
+					<BeltThickness>2.5 mm</BeltThickness>
+					<ConveyorLength>117 cm</ConveyorLength>
+					<ConveyorWidth>25 cm</ConveyorWidth>
+					<ConveyorHeight>74 cm</ConveyorHeight>
+					<AdjustableGuardrailHeight>0-15 cm</AdjustableGuardrailHeight>
+					<ProductWeight>19 kg</ProductWeight>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+			<TreeViewItem Text="Pvc Belt 200 x 20cm">
+				<Data>
+					<Name>Pvc Belt 200 x 20cm</Name>
+					<ConveyorLength>2m</ConveyorLength>
+					<ConveyorWidth>2cm</ConveyorWidth>
+					<ModelPath></ModelPath>
+				</Data>
+			</TreeViewItem>
+		</TreeViewItemHead>
+		<TreeViewItemHead Text="Others">
+			<TreeViewItem Text="TBD1"></TreeViewItem>
+			<TreeViewItem Text="TBD2"></TreeViewItem>
+		</TreeViewItemHead>
+	</TreeViewItemHead>
+</TreeViewItemHead>

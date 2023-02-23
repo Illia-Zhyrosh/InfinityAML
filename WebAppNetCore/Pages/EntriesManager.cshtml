@@ -1,0 +1,31 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Entries Manager";
+}
+<h1>@ViewData["Title"]</h1>
+<head>
+    <script src="~js/EntryManager.js"></script>
+</head>
+<body>
+    <div class="entriesBox">
+        <div role="row">
+            <a>Category</a>
+            <select>
+                <option selected=""></option>
+                <option>Robotics</option>
+                <option>Conveyors</option>
+                <option>Others</option>
+            </select>
+        </div>
+        <div role="row">
+            <a>Machine name</a>
+            <input id="machineName" />
+        </div>
+        <div role="row">
+            <button class="entryButton" onclick="okButtClicked">OK</button>
+            <button class="entryButton" onclick="cancelButtClicked">Cancel</button>
+        </div>
+    </div>
+</body>
+<p>Use this page to add new entries of machinery list </p>

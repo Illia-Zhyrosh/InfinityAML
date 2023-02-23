@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Test";
+    
+}
+
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <title>
+            Test
+        </title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Dependencies here-->
+       <script type="importmap">
+        {
+            "imports": {
+            "three": "./js/three/build/three.module.js",
+            "three/": "./js/three",
+            "file-saver": "./js/file-saver",
+            "xmlwriter": "./js/xmlwriter/XMLWriter.js"
+            
+
+                        }
+            }
+        </script>
+        
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/file-saver/dist/FileSaver.js"></script>
+        <script src="~/js/xmlwriter/XMLWriter.js"></script>
+        <script src="~/js/EntryManager.js"></script>
+        
+        
+        
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+        <!---------------------------------------------------->
+</head>
+<body>
+    <div style="margin:5px">
+        <div style="display:flex" class="content-holder">
+           <div class="treecontainer" id="treecontainer">
+                <ul class="tree" id="tree"></ul>
+            </div>
+             <div id="canv">
+           
+                 <div class="menuPanel">
+        <button type=button class="actionButton" id="fileButt" style="margin-right: 5px">File</button>
+        <button type=button class="actionButton" id="genAML" >Generate AML</button>
+        <button type=button class="actionButton" id="clearData" >Clear Data</button>
+        <button type=button class="actionButton" id="addEntry">Add New Entry</button>
+        
+
+                </div>
+             </div>
+             
+        </div>
+        <div id="UndoRedoHolder">
+            <button type=button class="actionButton" id="redo">
+                <img src="icons/redo.png" style="transform:scaleX(-1)"/>
+            </button>
+            <button type=button class="actionButton" id="undo">
+                <img src="icons/undo.png"/>
+            </button>
+        </div>
+         
+        <div class="console-holder">
+            
+            
+            <textarea id="console" class="console" readonly rows="7" cols="20" wrap="hard"></textarea>
+            
+        </div>
+        
+    </div>
+       
+            
+       
+    
+    
+    
+     
+     
+      <!-- This script makes a tree from xml file-->
+     <script src="~/js/treeview.js"></script>
+     <!--This makes 3dgrid in the right side of page-->
+     <script src="~/js/3dgrid.js" type="module"></script>
+
+     
+</body>

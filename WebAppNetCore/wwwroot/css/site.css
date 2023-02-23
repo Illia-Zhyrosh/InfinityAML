@@ -1,0 +1,223 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+.itemSelectableParent {
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: default;
+    marker-start: none;
+    width: fit-content;
+    margin: 5px;
+    border: solid;
+    border-color: black;
+    border-radius: 4px;
+    background-color: dimgray;
+    max-height: 100px;
+    overflow: auto;
+    padding:1px;
+}
+.infoButtons{
+    border:solid;
+    border-radius:5px;
+    background-color:goldenrod;
+}
+.infoButtons:hover{
+    color:blanchedalmond;
+    border-color:black;
+
+}
+.itemSelectable{
+    color:black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor:default;
+    marker-start: none;
+    width: fit-content;
+    margin:5px;
+    padding:2px;
+    border:solid;
+    border-color:black;
+    border-radius:4px;
+    background-color:darkgray;
+    max-height:100px;
+    overflow:auto;
+    text-decoration:none;
+    font-size:inherit;
+}
+.itemSelectable:hover{
+    color:forestgreen;
+    cursor:pointer;
+
+}
+.menuPanel{
+    width:100%;
+    height: fit-content;
+    float:left;
+    border-radius:2px;
+    border:solid;
+    background-color:lightgray;
+    border-color:dimgray;
+   
+}
+.actionButton{
+    display:inline-flex;
+    outline:none;
+    border:solid;
+    border-radius:5px;
+    width:fit-content;
+    margin:auto;
+    align-items:center;
+}
+.actionButton:hover{
+    color:chartreuse;
+}
+.content-holder{
+    max-height:50vh;
+    justify-content:center;
+    padding:5px;
+   
+}
+#canv {
+    margin-bottom: 6vh;
+    border: solid;
+    border-color: black;
+    border-radius: 5px;
+    max-width: 60%;
+    align-self: flex-end;
+    height:300px;
+    max-height: 300px;
+    float:right;
+    width:60%;
+    
+}
+#canv:hover{
+    cursor:none;
+}
+.renderer{
+    margin:auto;
+    padding-top:10px;
+    padding-bottom: 20px;
+}
+.treecontainer{
+    max-height:300px;
+    max-width:50%;
+    resize:none;
+    height:300px;
+    align-self:flex-start;
+    float:left;
+    padding-left:5px;
+    width:100%;
+    padding:0px;
+    vertical-align:top;
+}
+#tree ul li {
+    height: fit-content;
+    width:max-content;
+}
+.tree {
+    border: solid;
+    border-color: black;
+    border-radius: 5px;
+    background-color:lightgray;
+    nav-down: root;
+    overflow: auto;
+    max-height:inherit;
+    width:80%;
+    height:100%;
+    float:inherit;
+    padding:5px;
+    
+}
+.itemExpandable{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height:contain;
+    color:black;
+    background-color: darkgray;
+    font-style:normal;
+    border:solid;
+    border-top-left-radius:5px;
+    border-bottom-right-radius:5px;
+    border-color:black;
+    font-size-adjust:inherit;
+    font-size: large;
+    margin:0,10px,0,0;
+    text-decoration:none;
+    border-spacing:20px;
+    overflow:auto;
+   
+}
+.console-holder {
+    border: medium;
+    border-color: black;
+    border-radius: 5px;
+    height: 80%;
+    margin-top: 5px;
+    margin-bottom:5%;
+    text-align: left;
+    transform-box: border-box;
+    resize: none;
+    word-wrap: normal;
+    cursor: crosshair;
+    float: right;
+    width: 100%;
+    min-width:500px;
+    margin-left:50%;
+}
+.console {
+    min-width: 500px;
+    margin: 2px;
+    padding-left: 2px;
+    height: 70%;
+    width: 100%;
+    max-width: 100%;
+    resize: none;
+    grid-auto-rows: auto;
+}
+.console:hover{
+    cursor:default;
+}
+.itemExpandable:hover{
+    cursor:pointer;
+    color:mediumblue;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom:5%;
+  margin-left:2%;
+  margin-right:2%;
+}
+
+.entriesBox{
+    background-color:lightgray;
+    border:solid;
+    border-color:black;
+    border-radius:3px;
+    padding:2px;
+    max-width:50vh;
+    width:max-content;
+}
+.entriesBox>div{
+    margin:1vh;
+}
+.entryButton:hover{
+    color:chartreuse;
+    background-color:floralwhite;
+}
+.entryButton{
+    border:thin;
+    border-color:black;
+    border-radius:2px;
+}
