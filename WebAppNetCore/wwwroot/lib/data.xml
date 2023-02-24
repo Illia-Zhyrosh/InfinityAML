@@ -13,57 +13,57 @@
 		<TreeViewItemHead Text="OMRON">
 			<TreeViewItem Text="Viper 650">
 				<Data>
-					<Name>Viper 650</Name>
-					<Weight>36kg</Weight>
-					<Mounting>Table/Floor/Inverted</Mounting>
-					<NumberOfAxis>6</NumberOfAxis>
-					<Reach>653mm</Reach>
-					<MaximumPayload>5kg</MaximumPayload>
-					<ModelPath>./wwwroot/models/Av650.dae</ModelPath>
+					<Name Type="xs:string">Viper 650</Name>
+					<Weight Type="xs:double" Unit="kg">36</Weight>
+					<Mounting Type="xs:string">Table/Floor/Inverted</Mounting>
+					<NumberOfAxis Type="xs:int">6</NumberOfAxis>
+					<Reach Type="xs:double" Unit="mm">653</Reach>
+					<MaximumPayload Type="xs:double" Unit="kg" >5</MaximumPayload>
+					<ModelPath Type="xs:string">./wwwroot/models/Av650.dae</ModelPath>
 				</Data>
 			</TreeViewItem>
 			<TreeViewItem Text="TM5-700">
 				<Data>
-					<Name>TM5-700</Name>
-					<Weight>22.1kg</Weight>
-					<Mounting>Wall/Table/Ceiling</Mounting>
-					<Reach>700mm</Reach>
-					<MaximumPayload>6kg</MaximumPayload>
-					<PowerSource>AC/DC</PowerSource>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">TM5-700</Name>
+					<Weight Type="xs:double" Unit="kg">22.1</Weight>
+					<Mounting Type="xs:string">Wall/Table/Ceiling</Mounting>
+					<Reach Type="xs:double" Unit="mm">700</Reach>
+					<MaximumPayload Type="xs:double" Unit="kg">6</MaximumPayload>
+					<PowerSource Type="xs:string">AC/DC</PowerSource>
+					<ModelPath Type="xs:string"></ModelPath>
 				</Data>
 			</TreeViewItem>
 			<TreeViewItem Text="TM5X-700">
 				<Data>
-					<Name>TM5X-700</Name>
-					<Weight>21.8kg</Weight>
-					<Mounting>Wall/Table/Ceiling</Mounting>
-					<Reach>700mm</Reach>
-					<MaximumPayload>6kg</MaximumPayload>
-					<PowerSource>AC/DC</PowerSource>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">TM5X-700</Name>
+					<Weight Type="xs:double" Unit="kg">21.8</Weight>
+					<Mounting Type="xs:string">Wall/Table/Ceiling</Mounting>
+					<Reach Type="xs:double" Unit="mm">700</Reach>
+					<MaximumPayload Type="xs:double" Unit="kg">6</MaximumPayload>
+					<PowerSource Type="xs:string">AC/DC</PowerSource>
+					<ModelPath Type="xs:string"></ModelPath>
 				</Data>
 			</TreeViewItem>
 			<TreeViewItem Text="TM5-900">
 				<Data>
-					<Name>TM5-900</Name>
-					<Weight>22.6kg</Weight>
-					<Mounting>Wall/Table/Ceiling</Mounting>
-					<Reach>900mm</Reach>
-					<MaximumPayload>4kg</MaximumPayload>
-					<PowerSource>AC/DC</PowerSource>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">TM5-900</Name>
+					<Weight Type="xs:double" Unit="kg" >22.6</Weight>
+					<Mounting Type="xs:string">Wall/Table/Ceiling</Mounting>
+					<Reach Type="xs:double" Unit="mm">900</Reach>
+					<MaximumPayload Type="xs:double" Unit="kg">4</MaximumPayload>
+					<PowerSource Type="xs:string">AC/DC</PowerSource>
+					<ModelPath Type="xs:string" ></ModelPath>
 				</Data>
 			</TreeViewItem>
 			<TreeViewItem Text="TM5X-900">
 				<Data>
-					<Name>TM5X-900</Name>
-					<Weight>22.3kg</Weight>
-					<Mounting>Wall/Table/Ceiling</Mounting>
-					<Reach>900mm</Reach>
-					<MaximumPayload>4kg</MaximumPayload>
-					<PowerSource>AC/DC</PowerSource>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">TM5X-900</Name>
+					<Weight Type="xs:double" Unit="kg">22.3</Weight>
+					<Mounting Type="xs:string">Wall/Table/Ceiling</Mounting>
+					<Reach Type="xs:double" Unit="mm">900</Reach>
+					<MaximumPayload Type="xs:double" Unit="kg">4</MaximumPayload>
+					<PowerSource Type="xs:string">AC/DC</PowerSource>
+					<ModelPath Type="xs:string"></ModelPath>
 				</Data>
 			</TreeViewItem>
 		</TreeViewItemHead>
@@ -77,28 +77,28 @@
 		<TreeViewItemHead Text="VEVOR">
 			<TreeViewItem Text="Pvc Belt 150 x 20 cm">
 				<Data>
-					<Name>Pvc Belt 150 x 20 cm</Name>
-					<Material>Stainless Steel + PVC</Material>
-					<RatedVoltage> 220V / 50Hz</RatedVoltage>
-					<Power>60W</Power>
-					<Motor>Geared Motor</Motor>
-					<AdjustableSpeed> 30-120 RPM</AdjustableSpeed>
-					<BeltSize>150 x 20 cm</BeltSize>
-					<BeltThickness>2.5 mm</BeltThickness>
-					<ConveyorLength>117 cm</ConveyorLength>
-					<ConveyorWidth>25 cm</ConveyorWidth>
-					<ConveyorHeight>74 cm</ConveyorHeight>
-					<AdjustableGuardrailHeight>0-15 cm</AdjustableGuardrailHeight>
-					<ProductWeight>19 kg</ProductWeight>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">Pvc Belt 150 x 20 cm</Name>
+					<Material Type="xs:string">Stainless Steel + PVC</Material>
+					<RatedVoltage Type="xs:string" Unit="V/Hz"> 220/50</RatedVoltage>
+					<Power Type="xs:double" Unit="W">60</Power>
+					<Motor Type="xs:string">Geared Motor</Motor>
+					<AdjustableSpeed Type="xs:string" Unit="RPM"> 30-120 </AdjustableSpeed>
+					<BeltSize Type="xs:string" Unit="cm" >150 x 20</BeltSize>
+					<BeltThickness Type="xs:double" Unit="mm">2.5</BeltThickness>
+					<ConveyorLength Type="xs:double" Unit="cm">117</ConveyorLength>
+					<ConveyorWidth Type="xs:double" Unit="cm">25</ConveyorWidth>
+					<ConveyorHeight Type="xs:double" Unit="cm">74</ConveyorHeight>
+					<AdjustableGuardrailHeight Type="xs:string" Unit="cm">0-15</AdjustableGuardrailHeight>
+					<ProductWeight Type="xs:double" Unit="kg">19</ProductWeight>
+					<ModelPath Type="xs:string"></ModelPath>
 				</Data>
 			</TreeViewItem>
 			<TreeViewItem Text="Pvc Belt 200 x 20cm">
 				<Data>
-					<Name>Pvc Belt 200 x 20cm</Name>
-					<ConveyorLength>2m</ConveyorLength>
-					<ConveyorWidth>2cm</ConveyorWidth>
-					<ModelPath></ModelPath>
+					<Name Type="xs:string">Pvc Belt 200 x 20cm</Name>
+					<ConveyorLength Type="xs:double" Unit="m">2</ConveyorLength>
+					<ConveyorWidth Type="xs:double" Unit="cm">20</ConveyorWidth>
+					<ModelPath Type="xs:string"></ModelPath>
 				</Data>
 			</TreeViewItem>
 		</TreeViewItemHead>

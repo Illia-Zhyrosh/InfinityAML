@@ -233,17 +233,13 @@ $.ajax({
                     var elem = $(whoIsParent(whoIsParent(items[counter - 1]))).attr('Text');
                     if (elem != undefined) {
                         writer.writeAttributeString('RefBaseSystemUnitPath', ('Plant/' + elem));
+                        writer.writeStartElement('RoleRequirements');
+                        writer.writeAttributeString('RefBaseRoleClassPath', ('Roles/' + elem));
+                        writer.writeEndElement();
+                        
                     }
                     counter+=1;
-                    //Attributes for each object
-                    $(this.children).each(function () {
-
-                        writer.writeStartElement('Attribute');
-                        writer.writeAttributeString('Name', $(this).prop('tagName'));
-                        writer.writeElementString('Value', $(this).text());
-                        writer.writeEndElement();
-
-                    });
+                    
                     writer.writeEndElement();
 
 
@@ -266,7 +262,13 @@ $.ajax({
                 writer.writeAttributeString('Name', 'Roles');
 
                 writer.writeElementString('Version', '0');
-
+                for (var i = 0; i < categories.length; i += 1) {
+                    writer.writeStartElement('RoleClass');
+                    writer.writeAttributeString('Name', categories[i]);
+                    writer.writeEndElement();
+                }
+                
+             
 
                 writer.writeEndElement();
                 writer.writeEndElement();
@@ -291,6 +293,31 @@ $.ajax({
                                 writer.writeStartElement('InternalElement');
                                 writer.writeAttributeString('Name', $(items[k]).find('Name').text());
                                 writer.writeAttributeString('ID', (k).toString() + 'IE');
+                                //Attributes for each object
+                                var parentData;
+                                $(data).find('Data').children().each(function () {
+                                    
+                                    if ($(this).prop('tagName') == 'Name' && $(this).text() == $(items[k]).find('Name').text()) {
+                                        parentData = whoIsParent(this);
+                                        
+                                        return;
+                                    }
+                                    
+                                });
+                                $(parentData).children().each(function () {
+                                    writer.writeStartElement('Attribute')
+                                    writer.writeAttributeString('Name', $(this).prop('tagName'))
+                                    writer.writeElementString('Value', $(this).text());
+                                    if ($(this).attr('Type') != undefined) {
+                                        writer.writeAttributeString('AttributeDataType', $(this).attr('Type'));
+                                    }
+                                    if ($(this).attr('Unit') != undefined) {
+                                        writer.writeAttributeString('Unit', $(this).attr('Unit'));
+                                    }
+                                    writer.writeEndElement();
+                                   
+
+                                });
                                 writer.writeEndElement();
                                 elemCount -= 1;
 
