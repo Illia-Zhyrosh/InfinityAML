@@ -114,9 +114,8 @@ function init() {
             var zpos = highlighterPos.z;
             console.log(highlightMesh.position.x + ' ' + highlightMesh.position.y + ' ' + highlightMesh.position.z);
             console.log(xpos + ' ' + ypos + ' ' + zpos);
-           
-
-            var modelPath = fetch('./wwwroot/models/Av650.dae', { mode: 'cors' }).then(response => {
+            
+            fetch('./wwwroot/models/Av650.dae', { mode: 'cors' }).then(response => {
                 loader.load(response.url, function (loaded) {
                     var model = loaded.scene;
                     model.name = 'Added';

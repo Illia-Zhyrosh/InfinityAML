@@ -203,12 +203,24 @@ $.ajax({
                 writer.writeElementString('WriterVendorURL', 'www.AutomationML.org');
                 writer.writeElementString('WriterVersion', '5.6.10.0');
                 writer.writeElementString('WriterRelease', '5.6.10.0');
-                writer.writeElementString('LastWritingDateTime', '2012-02-20');
+                writer.writeElementString('LastWritingDateTime', Date.now());
                 writer.writeElementString('WriterProjectTitle', 'Testing');
                 writer.writeElementString('WriterProjectID', 'My Project');
                 writer.writeEndElement();
                 writer.writeEndElement();
                 var items = Array.from(datas);
+                // Categories array
+                var headers = $(data).find('TreeViewItemHead');
+                var categories = Array();
+                $(headers).each(function () {
+                    var cat = $(this).attr('Category')
+                    if (cat != undefined) {
+
+                        categories.push(cat);
+                    }
+
+                });
+                console.log(categories);
 
                 // Data 
                 writer.writeStartElement('InstanceHierarchy');
@@ -217,9 +229,13 @@ $.ajax({
                 $(items).find('Data').each(function () {
                     writer.writeStartElement('InternalElement');
                     writer.writeAttributeString('Name', $(this).find('Name').text());
-                    writer.writeAttributeString('ID', counter);
-                    counter++;
-
+                    writer.writeAttributeString('ID', counter + 'IH');
+                    var elem = $(whoIsParent(whoIsParent(items[counter - 1]))).attr('Text');
+                    if (elem != undefined) {
+                        writer.writeAttributeString('RefBaseSystemUnitPath', ('Plant/' + elem));
+                    }
+                    counter+=1;
+                    //Attributes for each object
                     $(this.children).each(function () {
 
                         writer.writeStartElement('Attribute');
@@ -255,39 +271,34 @@ $.ajax({
                 writer.writeEndElement();
                 writer.writeEndElement();
 
-                // Categories array
-                var headers = $(data).find('TreeViewItemHead');
-                var categories = Array();
-                $(headers).each(function () {
-                    var cat = $(this).attr('Category')
-                    if (cat != undefined) {
-                        
-                        categories.push(cat);
-                    }
-                    
-                });
-                console.log(categories);
+                
 
                 // Unit Classes
                 writer.writeStartElement('SystemUnitClassLib');
                 writer.writeAttributeString('Name', 'Plant');
+                var elemCount = items.length;
                 for (var c = 0; c < categories.length; c += 1) {
-                    writer.writeStartElement('SystemUnitClass');
-                    writer.writeAttributeString('Name', categories[c]);
-                    writer.writeElementString('Version', '0');
-                    for (var k = 0; k < items.length; k += 1) {
-                        var elem = $(whoIsParent(whoIsParent(items[k]))).attr('Text');
-                        if (elem == categories[c]) {
-
-                            writer.writeStartElement('InternalElement');
-                            writer.writeAttributeString('Name', $(items[k]).find('Name').text());
-                            writer.writeAttributeString('ID', (k).toString() + 'IE');
-                            writer.writeEndElement();
+                    if (elemCount != 0) {
+                        writer.writeStartElement('SystemUnitClass');
+                        writer.writeAttributeString('Name', categories[c]);
+                        writer.writeElementString('Version', '0');
 
 
-                        };
+                        for (var k = 0; k < items.length; k += 1) { // Adding children to appropriate category
+                            var elem = $(whoIsParent(whoIsParent(items[k]))).attr('Text');
+                            if (elem == categories[c]) {
+
+                                writer.writeStartElement('InternalElement');
+                                writer.writeAttributeString('Name', $(items[k]).find('Name').text());
+                                writer.writeAttributeString('ID', (k).toString() + 'IE');
+                                writer.writeEndElement();
+                                elemCount -= 1;
+
+                            }
+                        }
+                        writer.writeEndElement();
                     }
-                    writer.writeEndElement();
+                    
                     
                 }
                 writer.writeEndElement();
@@ -319,7 +330,7 @@ $.ajax({
                 //replacing outdated declaration to prevent AML crashes;
                 str = str.replace('<?xml version="1.0" encoding="UTF-8" standalone="true" ?>', '<?xml version="1.0" encoding="UTF-8" ?>')
                 
-                //Download creation
+                //Download link call
                 var a = document.createElement('a');
                 a.href = window.URL.createObjectURL(new Blob([str]));
                 a.download = 'Model.aml';
@@ -331,7 +342,7 @@ $.ajax({
             
             
         };
-        //Aml button logic;
+        //Aml button logic
 
         var amlButt = document.getElementById('genAML');
         amlButt.addEventListener('click', function () {
