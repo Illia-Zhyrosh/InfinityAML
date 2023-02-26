@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\js\three\examples\js\loaders\ColladaLoader.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

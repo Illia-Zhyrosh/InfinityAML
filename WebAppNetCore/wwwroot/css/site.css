@@ -206,11 +206,60 @@ body {
     border-color:black;
     border-radius:3px;
     padding:2px;
-    max-width:50vh;
-    width:max-content;
+    max-width:100vh;
+    float:left;
+    max-height:65vh;
+    resize:none;
+    vertical-align:top;
+    overflow:auto;
+    nav-down:root;
 }
-.entriesBox>div{
-    margin:1vh;
+.entriesBox > div {
+    margin: 0.5vh;
+    float: right;
+    width: 90%;
+}
+.optionalData{
+    float:left;
+    width: 90%;
+    margin: 0vh;
+}
+.optionalData > div > a {
+    float: left;
+}
+.optionalData > div > select {
+    float: left;
+    margin-right:1vh;
+}
+.optionalData > div > input {
+    float: right;
+}
+.optionalData > div{
+    float:right;
+    margin-bottom:1vh;
+    width:100%;
+}
+
+
+.entriesBox > div > select {
+    float: right;
+}
+.entriesBox > div > input{
+    float: right;
+}
+.entriesBox > div > a{
+    float: left;
+}
+.buttonPanel {
+    border: solid;
+    color: dimgray;
+    border-radius: 3px;
+    place-content:space-evenly;
+}
+.buttonPanel > button{
+    margin:auto;
+    
+    
 }
 .entryButton:hover{
     color:chartreuse;
