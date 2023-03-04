@@ -206,7 +206,8 @@ body {
     border-color:black;
     border-radius:3px;
     padding:2px;
-    max-width:100vh;
+    max-width:120vh;
+    width:120vh;
     float:left;
     max-height:65vh;
     resize:none;
@@ -219,20 +220,30 @@ body {
     float: right;
     width: 90%;
 }
+.optionalData > #inputField{
+    float:left;
+    margin-left: 1vh;
+}
 .optionalData{
     float:left;
     width: 90%;
     margin: 0vh;
 }
-.optionalData > div > a {
-    float: left;
+.optionalData > div > a{
+    margin-left: 1vh;
+    text-decoration: none;
+    color:black;
+}
+.unitTag{
+    float:right;
 }
 .optionalData > div > select {
     float: left;
     margin-right:1vh;
 }
-.optionalData > div > input {
+.optionalData > div > #optionInput {
     float: right;
+    width: stretch;
 }
 .optionalData > div{
     float:right;
@@ -257,8 +268,7 @@ body {
     place-content:space-evenly;
 }
 .buttonPanel > button{
-    margin:auto;
-    
+    margin:0.2vh;
     
 }
 .entryButton:hover{

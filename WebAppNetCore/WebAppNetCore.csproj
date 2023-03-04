@@ -31,4 +31,8 @@
     <Folder Include="wwwroot\icons\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="jQuery-vsdoc" Version="2.1.0" />
+  </ItemGroup>
+
 </Project>
