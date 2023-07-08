@@ -1,47 +1,97 @@
 ﻿@page
+@using System.Xml
+@using Microsoft.AspNetCore.Http.Extensions
+@using Newtonsoft.Json
+@using MongoDB.Driver
+@using Microsoft.Extensions.Configuration;
+@using WebAppNetCore.wwwroot.Models.DataModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+@inject IAntiforgery antiforgery;
 @model PrivacyModel
+
 @{
     ViewData["Title"] = "Entries Manager";
+    var token = antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
+    var interfaces = await GetInterfaces();
+   
+
+
+
 }
+
+
+@{
+
+
+    async Task<string> GetInterfaces()
+    {
+
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile("appsettings.Development.json");
+
+        IConfiguration configuration = builder.Build();
+        var constring = configuration["MyDatabaseSettings:ConnectionString"];
+
+        var client = new MongoClient(constring);
+        var db = client.GetDatabase("Interfaces_Database");
+
+        var collection = db.GetCollection<DataModel>("Base_Interface_Library");
+        var value = collection.Find<DataModel>(_ => true);
+        var result = "";
+        foreach (var i in value.ToList())
+        {
+            result += i.Data;
+        }
+
+        return result;
+
+    }
+}
+
+
 <h1>@ViewData["Title"]</h1>
 <head>
     <!-- Entry manager script  -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/js/EntryManager.js"></script>
     <script src="~/js/xmlwriter/XMLWriter.js"></script>
-    <p>Use this page to add new entries to machinery list </p>
+
 </head>
+<h4>Use this page to add new entries to machinery list </h4>
 <body>
     <div class="entriesBox" id="parentNode">
         <div role="row" class="buttonPanel">
-            <button class="entryButton" id="okButt">OK</button>
-            <button class="entryButton" id="cancelButt">Cancel</button>
-            <button class="entryButton" id="rowAddButt">Add option row </button>
-        </div>
-        <div role="row">
+            <a hidden="hidden" id="interfaceLib">@interfaces</a>
+            @using (Html.BeginForm())
+            {
+                <a>Collection Name:</a>
+                <input name="userInput" type="text" class="collectionName" id="collectionName" value="Collection" />
+                <textarea name="userData" id="userData" hidden="hidden" style="white-space:pre"></textarea>
+                <button asp-page-handler="DoWork"  id="okButt" class="entryButton">OK</button>
+                
+            }
+                <button class="entryButton" id="cancelButt">Cancel</button>
+                <button class="entryButton" id="rowAddButt">Add option row </button>
+            </div>
+            <div role="row">
 
-            <a>Category</a>
-            <select id="categoryOptions">
-            </select>
-        </div>
-        <div role="row">
-            <a>Manufacturer</a>
-            <input id="manufacturerName" required/>
-        </div>
-        <div role="row">
-            <a>Machine name</a>
-            <input id="machineName" required />
-        </div>
-       
-        <div class="optionalData" id="optionalData">
-            
-        </div>
-       
+                <a>Category</a>
+                <select id="categoryOptions">
+                </select>
+            </div>
+            <div role="row">
+                <a>Manufacturer</a>
+                <input id="manufacturerName" required />
+            </div>
+            <div role="row">
+                <a>Machine name</a>
+                <input id="machineName" required />
+            </div>
 
-        
-    </div>
-        
-
-    
-</body>
+            <div class="optionalData" id="optionalData">
+            </div>
+        </div>
+    </body>
 

@@ -7,6 +7,7 @@
   "main": "index",
   "scripts": {
     "test": "lab -a code -v -t 93 test/test.js"
+   
   },
   "dependencies": {
     "hoek": "^4.2.1",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "code": "^3.0.2",
     "lab": "^18.0.0"
-    
+
   }
+  
 }

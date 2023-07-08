@@ -1,94 +1,203 @@
 ﻿@page
+@using MongoDB.Bson
+@using MongoDB.Driver
+@using System.Xml
+@using Newtonsoft.Json
+@using WebAppNetCore;
+@using WebAppNetCore.wwwroot.Models.DataModel;
+@using Microsoft.Extensions.Options;
+@using Microsoft.Extensions.Configuration;
 @model IndexModel
 @{
     ViewData["Title"] = "Test";
-    
+
+
+
+    string databaseNames = await GetNames();
+
+    string interfaceFile = await GetInterfaceLib();
+}
+@{
+    async Task<string> GetNames()
+    {
+        string res = "";
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile("appsettings.Development.json");
+
+        IConfiguration configuration = builder.Build();
+        var constring = configuration["MyDatabaseSettings:ConnectionString"];
+
+        var client = new MongoClient(constring);
+        var db = client.GetDatabase("AMLDatabase");
+        List<string> collectionNames = new List<string>();
+        foreach (BsonDocument collection in db.ListCollectionsAsync().Result.ToListAsync<BsonDocument>().Result)
+        {
+            string name = collection["name"].AsString;
+            collectionNames.Add(name);
+        }
+        foreach (var i in collectionNames)
+        {
+            res += i + "/";
+        }
+
+        return res;
+
+    }
+    async Task<string> GetInterfaceLib()
+    {
+        string res = "";
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile("appsettings.Development.json");
+
+        IConfiguration configuration = builder.Build();
+        var constring = configuration["MyDatabaseSettings:ConnectionString"];
+        var data = new DataModel();
+        var client = new MongoClient(constring);
+        var db = client.GetDatabase("Interfaces_Database");
+        var collection = db.GetCollection<DataModel>("Base_Interface_Library");
+        var results = await collection.FindAsync<DataModel>(_ => true);
+        foreach (var result in results.ToList())
+        {
+            if (result.Data != null)
+            {
+                res += result.Data;
+            }
+        }
+
+
+        return res;
+    }
+
 }
 
-
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <title>
-            Test
-        </title>
-        <base href="/">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <title>
+        InfinityAML
+    </title>
 
-        <!--Dependencies here-->
-       <script type="importmap">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Dependencies here-->
+    <script type="importmap">
         {
             "imports": {
             "three": "./js/three/build/three.module.js",
             "three/": "./js/three",
-            "file-saver": "./js/file-saver",
             "xmlwriter": "./js/xmlwriter/XMLWriter.js"
-            
-
                         }
             }
-        </script>
-        
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/js/file-saver/dist/FileSaver.js"></script>
-        <script src="~/js/xmlwriter/XMLWriter.js"></script>
-        
-        
-        
-        
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
-        <!---------------------------------------------------->
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/js/xmlwriter/XMLWriter.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <!---------------------------------------------------->
 </head>
 <body>
     <div style="margin:5px">
-        <div style="display:flex" class="content-holder">
-           <div class="treecontainer" id="treecontainer">
-                <ul class="tree" id="tree"></ul>
-            </div>
-             <div id="canv">
-           
-                 <div class="menuPanel">
-        <button type=button class="actionButton" id="fileButt" style="margin-right: 5px">File</button>
-        <button type=button class="actionButton" id="genAML" >Generate AML</button>
-        <button type=button class="actionButton" id="clearData" >Clear Data</button>
-        <button type=button class="actionButton" id="addEntry">Add New Entry</button>
-        
 
+        <div role="row" class="form-content">
+            <div role="row">
+                @using (Html.BeginForm())
+                {
+                    <a> Current collection: </a>
+                    <textarea id="collectionsText" hidden="hidden">@databaseNames</textarea>
+                    <textarea id="interfaceLib" hidden="hidden">@interfaceFile</textarea>
+                    <input id="userData" name="userData" hidden="hidden" value="XmlStrings" />
+                    <select id="dataCollectionsList" onchange="getValue(this)"  onfocus="this.selectedIndex = -1;">
+                        <option value="" onclick="this.selectedIndex = +1;" onmousedown="this.selectedIndex = +1;"></option>
+                    </select>
+                    <a hidden="hidden" id="returnedData">@Model.CollectionData</a>
+                    <button asp-page-handler="NameChange" class="entryButton" id="changeButt">OK</button>
+                    
+                }
+                
+                @section Scripts{
+                    <script type="text/javascript">
+                        var values = document.getElementById('collectionsText').innerHTML;
+                        var valuesArr = Array();
+                        var selector = document.getElementById('dataCollectionsList');
+
+
+                        
+
+                        valuesArr = values.split('/');
+                        valuesArr.pop();
+                        valuesArr.forEach(function (f) {
+                            var index = valuesArr.indexOf(f);
+                            var option = document.createElement('option');
+                            option.id = "option";
+                            option.text = f;
+                            option.value = f;
+                            if (index == 0) {
+                                $('#option').prop('selected', 'selected');
+                            }
+
+
+                            selector.appendChild(option);
+
+
+                        })
+                        function getValue(val) {
+                            var name = document.getElementById('userData');
+                            name.value = val.value;
+                            console.log(name.value);
+                            
+                            localStorage.setItem('data', name.value);
+
+                        }
+                        function RedirectToEntry(){
+                            var doc = document.getElementById('returnedData');
+                            if ($(doc).text() == "" || $(doc).text() == undefined) {
+                                alert('No collection selected!');
+                            }
+                            else{
+                                window.location.replace('/EntriesManager')
+
+                            }
+                        }
+                        
+
+                    </script>
+
+                }
+                    <div class="dropdown">
+                        <button class="actionButton" id="dropdownButt">File</button>
+                        <div class="dropdown-content">
+                            <button type=button class="actionButton" id="genAML">Generate AML</button>
+                            <button type=button class="actionButton" id="clearData">Clear Data</button>
+                            <button type=button class="actionButton" id="addEntry" onclick="RedirectToEntry()">Add New Entry</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="actionButton" id="dropdownButt">Options</button>
+                        <div class="dropdown-content" style="min-width:200px">
+                            <button class="actionButton" id="boxButt" style="width:100%" >Disable bounding boxes</button>
+                            <button class="actionButton" id="libButt">Exclude interface library</button>
+                        </div>
+                    </div>
                 </div>
-             </div>
-             
-        </div>
-        <div id="UndoRedoHolder">
-            <button type=button class="actionButton" id="redo">
-                <img src="icons/redo.png" style="transform:scaleX(-1)"/>
-            </button>
-            <button type=button class="actionButton" id="undo">
-                <img src="icons/undo.png"/>
-            </button>
-        </div>
-         
-        <div class="console-holder">
-            
-            
-            <textarea id="console" class="console" readonly rows="7" cols="20" wrap="hard"></textarea>
-            
-        </div>
-        
-    </div>
-       
-            
-       
-    
-    
-    
-     
-      <!-- This script makes a tree from xml file-->
-     <script src="~/js/treeview.js"></script>
-     <!--This makes 3dgrid in the right side of page-->
-     <script src="~/js/3dgrid.js" type="module"></script>
+            </div>
+            <div style="display:flex" class="content-holder">
+                
+                <div class="treecontainer" id="treecontainer">
+                    <ul class="tree" id="tree"></ul>
+                </div>
+                <div id="canv"></div>
+            </div>
+            <div class="console-holder">
+                <textarea name="Console" id="console" class="console" readonly autofocus rows="5" cols="20" wrap="hard" runat="server">
 
-     
-     
-</body>
+                </textarea>
+            </div>
+        </div>
+        <!-- This script makes a tree from xml file-->
+        <script src="~/js/treeview.js"></script>
+        <!--This makes 3dgrid in the right side of page-->
+        <script src="~/js/3dgrid.js" type="module"></script>
+    </body>

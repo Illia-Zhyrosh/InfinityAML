@@ -7,11 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\js\jszip\**" />
+    <Compile Remove="wwwroot\js\mongodb\**" />
+    <Content Remove="wwwroot\js\jszip\**" />
+    <Content Remove="wwwroot\js\mongodb\**" />
+    <EmbeddedResource Remove="wwwroot\js\jszip\**" />
+    <EmbeddedResource Remove="wwwroot\js\mongodb\**" />
+    <None Remove="wwwroot\js\jszip\**" />
+    <None Remove="wwwroot\js\mongodb\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
     <Content Remove="wwwroot\js\EntryManager.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\EntryManager.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="wwwroot\Models\DataModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +49,8 @@
 
   <ItemGroup>
     <PackageReference Include="jQuery-vsdoc" Version="2.1.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

@@ -11,14 +11,26 @@
       "destination": "wwwroot/js/jstree/"
     },
     {
-      "provider": "unpkg",
       "library": "file-saver@2.0.5",
       "destination": "wwwroot/js/file-saver/"
     },
     {
-      "provider": "unpkg",
       "library": "xmlwriter@1.0.2",
       "destination": "wwwroot/js/xmlwriter/"
+    },
+    {
+      "library": "requirejs@2.3.6",
+      "destination": "wwwroot/js/requirejs/"
+    },
+    {
+      "library": "mongodb@5.2.0",
+      "destination": "wwwroot/js/mongodb/"
     }
-  ]
+  ,
+{
+  "provider": "unpkg",
+  "library": "jszip@3.10.1",
+  "destination": "wwwroot/js/jszip/"
+}
+]
 }

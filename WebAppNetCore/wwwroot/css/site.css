@@ -1,11 +1,11 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 
@@ -22,261 +22,362 @@ html {
     background-color: dimgray;
     max-height: 100px;
     overflow: auto;
-    padding:1px;
+    padding: 1px;
 }
-.infoButtons{
-    border:solid;
-    border-radius:5px;
-    background-color:goldenrod;
-}
-.infoButtons:hover{
-    color:blanchedalmond;
-    border-color:black;
 
+.infoButtons {
+    border: solid;
+    border-radius: 5px;
+    background-color: goldenrod;
 }
-.itemSelectable{
-    color:black;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    cursor:default;
+
+.infoButtons:hover {
+    color: blanchedalmond;
+    border-color: black;
+    }
+
+.itemSelectable {
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: default;
     marker-start: none;
     width: fit-content;
-    margin:5px;
-    padding:2px;
-    border:solid;
-    border-color:black;
-    border-radius:4px;
-    background-color:darkgray;
-    max-height:100px;
-    overflow:auto;
-    text-decoration:none;
-    font-size:inherit;
+    margin: 5px;
+    padding: 2px;
+    border: solid;
+    border-color: black;
+    border-radius: 4px;
+    background-color: darkgray;
+    max-height: 100px;
+    overflow: auto;
+    text-decoration: none;
+    font-size: inherit;
 }
-.itemSelectable:hover{
-    color:forestgreen;
-    cursor:pointer;
 
+    .itemSelectable:hover {
+        color: forestgreen;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    border: solid;
+    border-radius: 5px;
 }
-.menuPanel{
-    width:100%;
-    height: fit-content;
-    float:left;
-    border-radius:2px;
-    border:solid;
-    background-color:lightgray;
-    border-color:dimgray;
-   
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: auto;
+    min-width: 210px;
 }
-.actionButton{
-    display:inline-flex;
-    outline:none;
-    border:solid;
-    border-radius:5px;
-    width:fit-content;
-    margin:auto;
-    align-items:center;
+
+    .dropdown-content button {
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        display: block;
+        min-width: 210px;
+        margin-bottom: 2px;
+    }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
-.actionButton:hover{
-    color:chartreuse;
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }
-.content-holder{
-    max-height:50vh;
-    justify-content:center;
-    padding:5px;
-   
+
+.renderer {
+    padding: 5px;
+    margin-bottom: 20px;
 }
+
+.actionButton {
+    display: block;
+    outline: none;
+    border: solid;
+    border-radius: 5px;
+    width: max-content;
+    align-items: end;
+    font-size: 18px;
+}
+
+    .actionButton:hover {
+        color: chartreuse;
+    }
+
+.content-holder {
+    max-height: 50vh;
+    justify-content: center;
+    padding: 5px;
+    border: groove;
+    border-color: black;
+    border-radius: 5px;
+    margin-bottom: 1vh;
+    margin-top: 0.2vh;
+    background-color: lightgray;
+}
+
+.form-content {
+    background-color: lightgray;
+    border: thick;
+    border-radius: 2.5px;
+    padding: 1.5px;
+    margin: auto;
+}
+
 #canv {
     margin-bottom: 6vh;
     border: solid;
     border-color: black;
     border-radius: 5px;
     max-width: 60%;
-    align-self: flex-end;
-    height:300px;
+    align-self: center;
+    height: 300px;
+    max-height: contain;
+    float: right;
+    width: 60%;
+}
+
+    #canv:hover {
+        cursor: crosshair;
+    }
+
+.treecontainer {
     max-height: 300px;
-    float:right;
-    width:60%;
-    
+    max-width: 30vw;
+    resize: none;
+    height: 300px;
+    align-self: flex-start;
+    float: left;
+    padding-left: 5px;
+    width: 50%;
+    padding: 0px;
+    vertical-align: top;
 }
-#canv:hover{
-    cursor:none;
-}
-.renderer{
-    margin:auto;
-    padding-top:10px;
-    padding-bottom: 20px;
-}
-.treecontainer{
-    max-height:300px;
-    max-width:50%;
-    resize:none;
-    height:300px;
-    align-self:flex-start;
-    float:left;
-    padding-left:5px;
-    width:100%;
-    padding:0px;
-    vertical-align:top;
-}
+
 #tree ul li {
     height: fit-content;
-    width:max-content;
+    width: -webkit-fit-content;
 }
+
 .tree {
     border: solid;
     border-color: black;
     border-radius: 5px;
-    background-color:lightgray;
+    background-color: lightgray;
     nav-down: root;
     overflow: auto;
-    max-height:inherit;
-    width:80%;
-    height:100%;
-    float:inherit;
-    padding:5px;
-    
+    max-height: inherit;
+    height: 100%;
+    float: inherit;
+    padding: 5px;
+    width: 98%;
+    max-width: auto;
 }
-.itemExpandable{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height:contain;
-    color:black;
+
+.itemExpandable {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: contain;
+    color: black;
+    width: stretch;
     background-color: darkgray;
-    font-style:normal;
-    border:solid;
-    border-top-left-radius:5px;
-    border-bottom-right-radius:5px;
-    border-color:black;
-    font-size-adjust:inherit;
+    font-style: normal;
+    border: solid;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-color: black;
+    font-size-adjust: inherit;
     font-size: large;
-    margin:0,10px,0,0;
-    text-decoration:none;
-    border-spacing:20px;
-    overflow:auto;
-   
+    margin: 0,10px,0,0;
+    text-decoration: none;
+    border-spacing: 20px;
+    overflow: auto;
 }
+
+
 .console-holder {
     border: medium;
     border-color: black;
     border-radius: 5px;
-    height: 80%;
+    height: 10vh;
     margin-top: 5px;
-    margin-bottom:5%;
+    margin-bottom: 5%;
     text-align: left;
     transform-box: border-box;
     resize: none;
     word-wrap: normal;
-    cursor: crosshair;
     float: right;
     width: 100%;
-    min-width:500px;
-    margin-left:50%;
+    min-width: 500px;
 }
+
+    .console-holder:hover {
+        color: black;
+    }
+
 .console {
     min-width: 500px;
     margin: 2px;
     padding-left: 2px;
-    height: 70%;
+    height: 17vh;
     width: 100%;
     max-width: 100%;
     resize: none;
     grid-auto-rows: auto;
+    color: black;
 }
-.console:hover{
-    cursor:default;
-}
-.itemExpandable:hover{
-    cursor:pointer;
-    color:mediumblue;
+
+.itemExpandable:hover {
+    cursor: pointer;
+    color: mediumblue;
+    font-weight: bold;
 }
 
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom:5%;
-  margin-left:2%;
-  margin-right:2%;
+    margin-bottom: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
-.entriesBox{
-    background-color:lightgray;
-    border:solid;
-    border-color:black;
-    border-radius:3px;
-    padding:2px;
-    max-width:120vh;
-    width:120vh;
-    float:left;
-    max-height:65vh;
-    resize:none;
-    vertical-align:top;
-    overflow:auto;
-    nav-down:root;
+.entriesBox {
+    background-color: lightgray;
+    border: solid;
+    border-color: black;
+    border-radius: 3px;
+    padding: 2px;
+    max-width: 120vh;
+    width: 160vh;
+    float: left;
+    max-height: 65vh;
+    resize: none;
+    vertical-align: top;
+    overflow: auto;
+    nav-down: root;
 }
-.entriesBox > div {
-    margin: 0.5vh;
-    float: right;
-    width: 90%;
-}
-.optionalData > #inputField{
-    float:left;
+
+    .entriesBox > div {
+        margin: 0.5vh;
+        float: right;
+        width: 90%;
+    }
+
+.optionalData > #inputField {
+    float: left;
     margin-left: 1vh;
 }
-.optionalData{
-    float:left;
+
+.optionalData > div > #inputField {
+    float: left;
+    margin-left: 1vh;
+}
+
+.optionalData {
+    float: left;
     width: 90%;
     margin: 0vh;
 }
-.optionalData > div > a{
-    margin-left: 1vh;
-    text-decoration: none;
-    color:black;
+
+    .optionalData > div > a {
+        margin-left: 1vh;
+        text-decoration: none;
+        color: black;
+    }
+
+    .optionalData > div > div > a {
+        margin-left: 1vh;
+        text-decoration: none;
+        color: black;
+    }
+
+.unitTag {
+    float: right;
 }
-.unitTag{
-    float:right;
-}
+
 .optionalData > div > select {
     float: left;
-    margin-right:1vh;
+    margin-right: 1vh;
 }
+
 .optionalData > div > #optionInput {
     float: right;
     width: stretch;
 }
-.optionalData > div{
-    float:right;
-    margin-bottom:1vh;
-    width:100%;
+
+.optionalData > div > div > #optionInput {
+    float: right;
+    width: stretch;
 }
 
+.optionalData > div {
+    float: right;
+    margin-bottom: 1vh;
+    width: 100%;
+}
+
+.optionalData > div > div {
+    float: right;
+    margin-bottom: 1vh;
+    width: 100%;
+}
 
 .entriesBox > div > select {
     float: right;
 }
-.entriesBox > div > input{
+
+.entriesBox > div > input {
     float: right;
 }
-.entriesBox > div > a{
+
+.entriesBox > div > a {
     float: left;
 }
+
 .buttonPanel {
     border: solid;
     color: dimgray;
     border-radius: 3px;
-    place-content:space-evenly;
+    place-content: space-evenly;
 }
-.buttonPanel > button{
-    margin:0.2vh;
-    
+
+    .buttonPanel > button {
+        margin: 0.2vh;
+    }
+
+.entryButton:hover {
+    color: chartreuse;
+    background-color: floralwhite;
 }
-.entryButton:hover{
-    color:chartreuse;
-    background-color:floralwhite;
+
+.entryButton {
+    border: thin;
+    border-color: black;
+    border-radius: 2px;
 }
-.entryButton{
-    border:thin;
-    border-color:black;
-    border-radius:2px;
+
+footer {
+    width: 60vw !important;
+    display: flex !important;
+    align-self: center !important;
+    justify-content: center !important;
 }
